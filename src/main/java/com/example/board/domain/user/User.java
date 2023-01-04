@@ -33,10 +33,10 @@ public class User {
     private Timestamp createDate;
 
     @Builder
-    public User(String userName, String password, String email, Role role) {
+    public User(String userName, String password, String email) {
         this.userName = userName;
         this.password = password;
         this.email = email;
-        this.role = role;
+        this.role = Role.USER;
     }
 }
