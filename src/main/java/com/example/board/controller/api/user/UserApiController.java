@@ -5,7 +5,6 @@ import com.example.board.dto.user.UserLoginRequest;
 import com.example.board.dto.user.UserSaveDto;
 import com.example.board.service.user.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +18,7 @@ public class UserApiController {
 
     private final UserService userService;
 
-    @PostMapping("/api/v1/user")
+    @PostMapping("/api/v1/user/add")
     public Long save(@RequestBody UserSaveDto userSaveDto) {
         return userService.save(userSaveDto);
     }
