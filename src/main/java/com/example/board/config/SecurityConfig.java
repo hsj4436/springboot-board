@@ -44,7 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/user/login")
                 .loginProcessingUrl("/api/v1/user/login")
                 .defaultSuccessUrl("/")
-                .usernameParameter("userName");
+                .usernameParameter("userName")
+                .and()
+                .logout()
+                .logoutUrl("/user/logout")
+                .logoutSuccessUrl("/");
 
     }
 }
