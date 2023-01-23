@@ -23,16 +23,16 @@ public class UserApiController {
         return userService.save(userSaveDto);
     }
 
-    @PostMapping("/api/v1/user/login")
-    public ResponseEntity<String> login(@RequestBody UserLoginRequest userLoginRequest, HttpSession session) {
-        User loginUser = userService.login(userLoginRequest);
-
-        if (loginUser == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        session.setAttribute("loginUser", loginUser);
-
-        return ResponseEntity.ok("로그인 성공");
-    }
+//    @PostMapping("/api/v1/user/login")
+//    public ResponseEntity<String> login(@RequestBody UserLoginRequest userLoginRequest, HttpSession session) {
+//        User loginUser = userService.login(userLoginRequest);
+//
+//        if (loginUser == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        session.setAttribute("loginUser", loginUser);
+//
+//        return ResponseEntity.ok("로그인 성공");
+//    }
 }

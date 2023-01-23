@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,20 +12,20 @@
 <div class="container">
     <div class="container text-center">
         <div class="row justify-content-end">
-            <th:block th:if="${loginUser != null}">
+            <th:block sec:authorize="isAuthenticated()">
                 <div class="col-2">
-                    <h4 th:text="|로그인: ${loginUser.userName}|">로그인 사용자 이름</h4>
+                    <h4 sec:authentication="name"></h4>
                 </div>
             </th:block>
             <div class="col-2">
-                <button th:if="${loginUser == null}" class="w-100 btn btn-secondary btn-sm" type="button" th:onclick="|location.href='@{/user/login}'|">
+                <button sec:authorize="isAnonymous()" class="w-100 btn btn-secondary btn-sm" type="button" th:onclick="|location.href='@{/user/login}'|">
                     로그인
                 </button>
-                <button th:if="${loginUser != null}" class="w-100 btn btn-secondary btn-sm" type="button" th:onclick="|location.href='@{/user/logout}'|">
+                <button sec:authorize="isAuthenticated()" class="w-100 btn btn-secondary btn-sm" type="button" th:onclick="|location.href='@{/user/logout}'|">
                     로그아웃
                 </button>
             </div>
-            <th:block th:if="${loginUser == null}">
+            <th:block sec:authorize="isAnonymous()">
                 <div class="col-2">
                     <button class="w-100 btn btn-secondary btn-sm" type="button" th:onclick="|location.href='@{/user/add}'|">
                         회원가입
