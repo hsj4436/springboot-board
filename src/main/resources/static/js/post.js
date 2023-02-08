@@ -13,7 +13,7 @@ let index = {
 
         $.ajax({
             type: 'POST',
-            url: '/api/v1/posts/add',
+            url: '/api/v1/post/add',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)

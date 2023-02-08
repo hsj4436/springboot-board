@@ -1,6 +1,6 @@
 package com.example.board.domain.reply;
 
-import com.example.board.domain.posts.Posts;
+import com.example.board.domain.post.Post;
 import com.example.board.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +21,7 @@ public class Reply {
 
     @ManyToOne
     @JoinColumn(name = "postsId")
-    private Posts posts;
+    private Post posts;
 
     @ManyToOne
     @JoinColumn(name = "userId")
@@ -34,7 +34,7 @@ public class Reply {
     private Timestamp createDate;
 
     @Builder
-    public Reply(Posts posts, User user, String content) {
+    public Reply(Post posts, User user, String content) {
         this.posts = posts;
         this.user = user;
         this.content = content;

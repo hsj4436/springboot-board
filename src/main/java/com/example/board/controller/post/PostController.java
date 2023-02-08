@@ -1,13 +1,13 @@
-package com.example.board.controller.posts;
+package com.example.board.controller.post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class PostsController {
+public class PostController {
 
-    @GetMapping("/posts/write")
+    @GetMapping("/post/write")
     public String postsWrite() {
-        return "posts/writeForm";
+        return "post/writeForm";
     }
 }

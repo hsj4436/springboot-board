@@ -1,4 +1,4 @@
-package com.example.board.domain.posts;
+package com.example.board.domain.post;
 
 import com.example.board.domain.reply.Reply;
 import com.example.board.domain.user.User;
@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,7 @@ public class Posts {
     private Timestamp createDate;
 
     @Builder
-    public Posts(String title, String content, User user) {
+    public Post(String title, String content, User user) {
         this.title = title;
         this.content = content;
         /**
