@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PostController {
 
     @GetMapping("/post/write")
-    public String postsWrite() {
+    public String writePost() {
         return "post/writeForm";
     }
 }
