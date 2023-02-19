@@ -5,6 +5,8 @@ import com.example.board.domain.user.User;
 import com.example.board.dto.post.PostSaveRequestDto;
 import com.example.board.repository.post.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,5 +25,9 @@ public class PostService {
                 .build();
 
         return postRepository.save(post).getId();
+    }
+
+    public Page<Post> getPosts(Pageable pageable) {
+        return postRepository.findAll(pageable);
     }
 }

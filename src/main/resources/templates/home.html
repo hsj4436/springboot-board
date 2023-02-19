@@ -59,9 +59,24 @@
                 </tr>
             </thead>
             <tbody>
-
+                <tr th:each="post : ${posts.content}">
+                    <td th:text="${post.id}">번호</td>
+                    <td th:text="${post.title}">제목</td>
+                    <td th:text="${post.user.userName}">글쓴이</td>
+                    <td th:text="${post.createDate}"></td>
+                </tr>
             </tbody>
         </table>
+    </div>
+    <div class="container">
+        <ul class="pagination justify-content-center">
+            <li th:class="${posts.first} ? 'page-item disabled' : 'page-item'">
+                <a class="page-link" th:href="${posts.first} ? '#' : @{/(page=${posts.number - 1})}">Previous</a>
+            </li>
+            <li th:class="${posts.last} ? 'page-item disabled' : 'page-item'">
+                <a class="page-link" th:href="${posts.last} ? '#' : @{/(page=${posts.number + 1})}">Next</a>
+            </li>
+        </ul>
     </div>
 </div>
 </body>
