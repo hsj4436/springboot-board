@@ -5,9 +5,7 @@ import com.example.board.dto.post.PostSaveRequestDto;
 import com.example.board.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,5 +18,11 @@ public class PostApiController {
                      @AuthenticationPrincipal PrincipalDetail principalDetail) {
 
         return postService.save(postSaveRequestDto, principalDetail.getUser());
+    }
+
+    @DeleteMapping("/api/v1/post/delete/{postId}")
+    public Long delete(@PathVariable Long postId) {
+        postService.delete(postId);
+        return postId;
     }
 }

@@ -65,9 +65,12 @@
     <hr>
     <div class="container">
         <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
-        <button id="btn-update" class="btn btn-secondary">수정</button>
-        <button id="btn-delete" class="btn btn-secondary">삭제</button>
+        <th:block th:if="${post.user.userName == #authentication.getPrincipal().getUsername()}">
+            <button id="btn-update" class="btn btn-secondary">수정</button>
+            <button id="btn-delete" class="btn btn-secondary">삭제</button>
+        </th:block>
     </div>
 </div>
 </body>
+<script src="/js/post.js"></script>
 </html>

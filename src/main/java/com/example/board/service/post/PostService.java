@@ -28,13 +28,20 @@ public class PostService {
         return postRepository.save(post).getId();
     }
 
+    @Transactional(readOnly = true)
     public Page<Post> getPosts(Pageable pageable) {
         return postRepository.findAll(pageable);
     }
 
+    @Transactional(readOnly = true)
     public PostResponseDto getPost(Long id) {
         return postRepository.findById(id)
                 .map(PostResponseDto::new)
                 .orElseThrow(() -> new IllegalArgumentException("해당 post를 찾을 수 없습니다."));
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        postRepository.deleteById(id);
     }
 }
