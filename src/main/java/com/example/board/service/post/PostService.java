@@ -2,6 +2,7 @@ package com.example.board.service.post;
 
 import com.example.board.domain.post.Post;
 import com.example.board.domain.user.User;
+import com.example.board.dto.post.PostResponseDto;
 import com.example.board.dto.post.PostSaveRequestDto;
 import com.example.board.repository.post.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,11 @@ public class PostService {
 
     public Page<Post> getPosts(Pageable pageable) {
         return postRepository.findAll(pageable);
+    }
+
+    public PostResponseDto getPost(Long id) {
+        return postRepository.findById(id)
+                .map(PostResponseDto::new)
+                .orElseThrow(() -> new IllegalArgumentException("해당 post를 찾을 수 없습니다."));
     }
 }
