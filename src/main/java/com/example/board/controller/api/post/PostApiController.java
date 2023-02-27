@@ -8,26 +8,27 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+@RequestMapping("/api/v1/post")
 @RequiredArgsConstructor
 @RestController
 public class PostApiController {
 
     private final PostService postService;
 
-    @PostMapping("/api/v1/post/add")
+    @PostMapping("/add")
     public Long save(@RequestBody PostSaveRequestDto postSaveRequestDto,
                      @AuthenticationPrincipal PrincipalDetail principalDetail) {
 
         return postService.save(postSaveRequestDto, principalDetail.getUser());
     }
 
-    @DeleteMapping("/api/v1/post/delete/{postId}")
+    @DeleteMapping("/delete/{postId}")
     public Long delete(@PathVariable Long postId) {
         postService.delete(postId);
         return postId;
     }
 
-    @PutMapping("/api/v1/post/update/{postId}")
+    @PutMapping("/update/{postId}")
     public Long update(@PathVariable Long postId,
                        @RequestBody PostUpdateRequestDto postUpdateRequestDto) {
         postService.update(postId, postUpdateRequestDto);
