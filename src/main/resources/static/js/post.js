@@ -31,8 +31,7 @@ let index = {
     },
 
     deletePost: function() {
-        let url = window.location.href;
-        let id = url.slice(url.lastIndexOf('/') + 1);
+        let id = $('#id').val();
 
         $.ajax({
             type: 'DELETE',
