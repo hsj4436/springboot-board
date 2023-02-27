@@ -2,6 +2,7 @@ package com.example.board.controller.api.post;
 
 import com.example.board.config.auth.PrincipalDetail;
 import com.example.board.dto.post.PostSaveRequestDto;
+import com.example.board.dto.post.PostUpdateRequestDto;
 import com.example.board.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -23,6 +24,13 @@ public class PostApiController {
     @DeleteMapping("/api/v1/post/delete/{postId}")
     public Long delete(@PathVariable Long postId) {
         postService.delete(postId);
+        return postId;
+    }
+
+    @PutMapping("/api/v1/post/update/{postId}")
+    public Long update(@PathVariable Long postId,
+                       @RequestBody PostUpdateRequestDto postUpdateRequestDto) {
+        postService.update(postId, postUpdateRequestDto);
         return postId;
     }
 }

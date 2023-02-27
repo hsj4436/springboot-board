@@ -23,4 +23,10 @@ public class PostController {
         model.addAttribute("post", postService.getPost(postId));
         return "post/showPost";
     }
+
+    @GetMapping("/post/{postId}/updateForm")
+    public String updatePost(@PathVariable Long postId, Model model) {
+        model.addAttribute("post", postService.getPost(postId));
+        return "/post/updateForm";
+    }
 }

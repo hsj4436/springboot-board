@@ -4,6 +4,7 @@ import com.example.board.domain.post.Post;
 import com.example.board.domain.user.User;
 import com.example.board.dto.post.PostResponseDto;
 import com.example.board.dto.post.PostSaveRequestDto;
+import com.example.board.dto.post.PostUpdateRequestDto;
 import com.example.board.repository.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -43,5 +44,14 @@ public class PostService {
     @Transactional
     public void delete(Long id) {
         postRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void update(Long id, PostUpdateRequestDto postUpdateRequestDto) {
+        Post post = postRepository.findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("해당 post를 찾을 수 없습니다."));
+
+        post.setTitle(postUpdateRequestDto.getTitle());
+        post.setContent(postUpdateRequestDto.getContent());
     }
 }

@@ -6,6 +6,9 @@ let index = {
         $('#btn-delete').on('click', () => {
             this.deletePost();
         });
+        $('#btn-update').on('click', () => {
+            this.updatePost();
+        })
     },
 
     save: function() {
@@ -35,6 +38,27 @@ let index = {
             type: 'DELETE',
             url: '/api/v1/post/delete/' + id,
             dataType: 'json',
+        }).done(function() {
+            window.location.href='/';
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
+    },
+
+    updatePost: function() {
+        let id = $('#id').val();
+
+        let data = {
+            title: $('#title').val(),
+            content: $('#content').val()
+        };
+
+        $.ajax({
+            type: 'PUT',
+            url: '/api/v1/post/update/' + id,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
         }).done(function() {
             window.location.href='/';
         }).fail(function(error) {
